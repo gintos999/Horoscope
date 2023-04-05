@@ -32,3 +32,17 @@ def url_getter(url):
             link = 'https://astrorok.ru/' + link
         links.append(link)
     return links
+
+def text_getter(url):
+    headers = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
+               "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
+    req = requests.get(url, headers=headers)
+    soup = BeautifulSoup(req.text, features='lxml')
+    p_list = soup.find_all('p')
+    text_list = []
+    for p in p_list[:-1]:
+        # print(p.text)
+        if p.text not in ['\n', '', ' ']:
+            text_list.append(p.text)
+    return ' '.join(text_list)
+
