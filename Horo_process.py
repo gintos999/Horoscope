@@ -46,3 +46,26 @@ def text_getter(url):
             text_list.append(p.text)
     return ' '.join(text_list)
 
+
+def url_maker():
+    urls = []
+    domen = 'https://astrorok.ru/'
+    hand_list = ['nedelay/', 'den/']
+    postfix = ['-zavtra.php', '.php']
+    signs = ['oven', 'telecz', 'blizneczyi', 'lev', 'rak', 'deva', 'vesyi',
+             'scorpion', 'strelecz', 'kozerog', 'vodolej', 'ryibyi']
+    signs_orig = ['oven', 'taurus', 'twins', 'lion', 'cancer', 'virgo', 'libra',
+                  'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'fish']
+    months = ['noyabr', 'oktyabr', 'sentyabr', 'avgust', 'iyul', 'iyun', 'aprel', 'mart']
+    for sign in signs_orig:
+        urls.append(domen + hand_list[1] + sign + postfix[0])
+        urls.append(domen + hand_list[1] + sign + postfix[1])
+        urls.append(domen + hand_list[0] + sign + postfix[1])
+    for sign in signs:
+        for month in months:
+            urls.append(f'https://astrorok.ru/2022/goroskop-na-{month}-2022-goda-{sign}.php')
+            urls.append(f'https://astrorok.ru/2022/lyubovnyij-goroskop-na-{month}-2022-goda-{sign}.php')
+    for month in months:
+        urls.append(f'https://astrorok.ru/2022/goroskop-na-{month}-2022-goda.php')
+        urls.append(f'https://astrorok.ru/goroskop/goroskop-na-{month}-2021-goda.php')
+    return urls
