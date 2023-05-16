@@ -83,3 +83,11 @@ def bigram_division(list_of_tokens):
         list_of_bigrams.append(list_of_tokens[i] + ' ' + list_of_tokens[i + 1])
     # Сейчас он должен разбивать на токены по два слова
     return list_of_bigrams
+
+def trigram_division(list_of_tokens):
+    list_of_trigrams = []
+    for i in range(0, len(list_of_tokens) - 2):
+        list_of_trigrams.append(list_of_tokens[i] + ' ' + list_of_tokens[i + 1] + ' ' +
+                                list_of_tokens[i+2])
+        # Сейчас он должен разбивать на токены по три слова
+    return list_of_trigrams
