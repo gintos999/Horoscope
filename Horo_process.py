@@ -69,3 +69,10 @@ def url_maker():
         urls.append(f'https://astrorok.ru/2022/goroskop-na-{month}-2022-goda.php')
         urls.append(f'https://astrorok.ru/goroskop/goroskop-na-{month}-2021-goda.php')
     return urls
+
+
+def token_division(file_name, rex=r'[\S]+'):
+    with open(file_name, 'r', encoding='utf-8') as file:
+        list_of_tokens = regexp_tokenize(file.read(), rex)
+        # Сейчас он должен разбивать на токены по одному слову
+    return list_of_tokens
