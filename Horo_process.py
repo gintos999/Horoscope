@@ -69,3 +69,18 @@ def url_maker():
         urls.append(f'https://astrorok.ru/2022/goroskop-na-{month}-2022-goda.php')
         urls.append(f'https://astrorok.ru/goroskop/goroskop-na-{month}-2021-goda.php')
     return urls
+
+
+def token_division(file_name, rex=r'[\S]+'):
+    with open(file_name, 'r', encoding='utf-8') as file:
+        list_of_tokens = regexp_tokenize(file.read(), rex)
+        # Сейчас он должен разбивать на токены по одному слову
+    return list_of_tokens
+
+
+def bigram_division(list_of_tokens):
+    list_of_bigrams = []
+    for i in range(0, len(list_of_tokens) - 1):
+        list_of_bigrams.append(list_of_tokens[i] + ' ' + list_of_tokens[i + 1])
+    # Сейчас он должен разбивать на токены по два слова
+    return list_of_bigrams
