@@ -102,3 +102,10 @@ def only_capital_head(list_of_trigrams, n=3):
             if n == 2:
                 list_of_head.append(temp[0])
     return list_of_head
+
+
+def creation_of_prob_tail_list_2(head, list_of_bigrams):
+    list_of_tails = [bigram.split()[1] for bigram in list_of_bigrams
+                     if bigram.split()[0] == head]
+    prob_list_of_tails = Counter(list_of_tails).most_common()
+    return prob_list_of_tails
