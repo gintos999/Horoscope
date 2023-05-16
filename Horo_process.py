@@ -116,3 +116,10 @@ def creation_of_prob_tail_list_3(head, list_of_trigrams):
             list_of_tails.append(temp[2])
     prob_list_of_tails = Counter(list_of_tails).most_common()
     return prob_list_of_tails
+
+def creation_of_tail_or_prob_list(prob_list_of_tails, n=0):  # by default list of tails (if n=1: probs) will be created
+    out_list = []
+    for pair in prob_list_of_tails:
+        # print(pair)
+        out_list.append(pair[n])
+    return out_list
