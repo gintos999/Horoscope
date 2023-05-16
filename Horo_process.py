@@ -76,3 +76,10 @@ def token_division(file_name, rex=r'[\S]+'):
         list_of_tokens = regexp_tokenize(file.read(), rex)
         # Сейчас он должен разбивать на токены по одному слову
     return list_of_tokens
+
+def bigram_division(list_of_tokens):
+    list_of_bigrams = []
+    for i in range(0, len(list_of_tokens) - 1):
+        list_of_bigrams.append(list_of_tokens[i] + ' ' + list_of_tokens[i + 1])
+    # Сейчас он должен разбивать на токены по два слова
+    return list_of_bigrams
