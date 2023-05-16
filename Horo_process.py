@@ -91,3 +91,14 @@ def trigram_division(list_of_tokens):
                                 list_of_tokens[i+2])
         # Сейчас он должен разбивать на токены по три слова
     return list_of_trigrams
+
+def only_capital_head(list_of_trigrams, n=3):
+    list_of_head = []
+    for trigram in list_of_trigrams:
+        temp = trigram.split()
+        if temp[0][0].isupper() and temp[0][-1] not in ['!', '?', '.']:
+            if n == 3:
+                list_of_head.append(temp[0] + ' ' + temp[1])
+            if n == 2:
+                list_of_head.append(temp[0])
+    return list_of_head
