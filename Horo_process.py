@@ -70,7 +70,6 @@ def url_maker():
         urls.append(f'https://astrorok.ru/goroskop/goroskop-na-{month}-2021-goda.php')
     return urls
 
-
 def token_division(file_name, rex=r'[\S]+'):
     with open(file_name, 'r', encoding='utf-8') as file:
         list_of_tokens = regexp_tokenize(file.read(), rex)
@@ -102,3 +101,18 @@ def only_capital_head(list_of_trigrams, n=3):
             if n == 2:
                 list_of_head.append(temp[0])
     return list_of_head
+
+def creation_of_prob_tail_list_2(head, list_of_bigrams):
+    list_of_tails = [bigram.split()[1] for bigram in list_of_bigrams
+                     if bigram.split()[0] == head]
+    prob_list_of_tails = Counter(list_of_tails).most_common()
+    return prob_list_of_tails
+
+def creation_of_prob_tail_list_3(head, list_of_trigrams):
+    list_of_tails = []
+    for trigram in list_of_trigrams:
+        temp = trigram.split()
+        if temp[0] + ' ' + temp[1] == head:
+            list_of_tails.append(temp[2])
+    prob_list_of_tails = Counter(list_of_tails).most_common()
+    return prob_list_of_tails
